@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import moment from 'moment';
 import 'react-dates/initialize';
 import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
-import { addExpense } from '../actions/expenses';
 
 export default class ExpenseForm extends Component {
   state = {
@@ -13,6 +11,7 @@ export default class ExpenseForm extends Component {
     amount: '',
     createdAt: moment(),
     calenderFocused: false,
+    error: '',
   };
   onDescriptionChange = (e) => {
     const description = e.target.value;
@@ -37,10 +36,25 @@ export default class ExpenseForm extends Component {
   onCalendarFocusChange = ({ focused }) => {
     this.setState(() => ({ calenderFocused: focused }));
   };
+  onSubmit = (e) => {
+    e.preventDefault();
+    if (!this.state.description || !this.state.amount) {
+      this.setState(() => ({ error: 'Please provide a description and an amount' }));
+    } else {
+      this.setState(() => ({ error: '' }));
+      this.props.onSubmit({
+        description: this.state.description,
+        amount: parseFloat(this.state.amount, 10) * 100,
+        createdAt: this.state.createdAt.valueOf(),
+        note: this.state.note,
+      });
+    }
+  };
   render() {
     return (
       <div>
-        <form>
+        {this.state.error && <p>{this.state.error}</p>}
+        <form onSubmit={this.onSubmit}>
           <input
             type="text"
             placeholder="Description"

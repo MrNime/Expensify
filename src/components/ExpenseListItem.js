@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import moment from 'moment';
 import { removeExpense } from '../actions/expenses';
 
 const ExpenseListItem = ({
@@ -7,9 +8,9 @@ const ExpenseListItem = ({
 }) => (
   <div>
     <h4>{description}</h4>
-    <p>€{amount}</p>
-    <p>Created at: {createdAt}</p>
-    <p>{id}</p>
+    <p>€{(amount / 100).toFixed(2)}</p>
+    <p>Created at: {moment(createdAt).format('DD/MM/YYYY')}</p>
+    <p>id for dev: {id}</p>
     <button
       onClick={() => {
         dispatch(removeExpense({ id }));
