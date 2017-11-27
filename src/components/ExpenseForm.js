@@ -9,10 +9,10 @@ export default class ExpenseForm extends Component {
     super(props);
 
     this.state = {
-      description: props.expense.description || '',
-      note: props.expense.note || '',
-      amount: (props.expense.amount / 100).toFixed(2).toString() || '',
-      createdAt: moment(props.expense.createdAt) || moment(),
+      description: props.expense ? props.expense.description : '',
+      note: props.expense ? props.expense.note : '',
+      amount: props.expense ? (props.expense.amount / 100).toFixed(2).toString() : '',
+      createdAt: props.expense ? moment(props.expense.createdAt) : moment(),
       calenderFocused: false,
       error: '',
     };
@@ -80,7 +80,7 @@ export default class ExpenseForm extends Component {
             onFocusChange={this.onCalendarFocusChange}
             numberOfMonths={1}
             isOutsideRange={() => false}
-            displayFormat="D/MM/YYYY"
+            displayFormat="DD/MM/YYYY"
           />
           <textarea
             placeholder="Add a note for your expense (optional)"
