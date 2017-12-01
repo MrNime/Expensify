@@ -1,13 +1,17 @@
 {
   "name": "expensify",
   "version": "1.0.0",
-  "description": "",
+  "description": "Application used to track expenses",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MrNime/Expensify.git"
+  },
   "main": "index.js",
   "scripts": {
     "serve": "live-server public/",
     "build": "webpack",
     "dev": "webpack-dev-server",
-    "test": "jest"
+    "test": "jest --config=jest.config.json"
   },
   "author": "Nicky Meuleman",
   "license": "MIT",
@@ -21,6 +25,9 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.7",
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
+    "enzyme-to-json": "^3.2.2",
     "eslint": "^4.9.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.8.0",
@@ -30,6 +37,7 @@
     "live-server": "^1.2.0",
     "node-sass": "^4.5.3",
     "prettier-eslint": "^8.2.1",
+    "raf": "^3.4.0",
     "react-test-renderer": "^16.2.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.0",
