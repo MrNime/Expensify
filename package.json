@@ -12,7 +12,9 @@
     "build:dev": "webpack",
     "build:prod": "webpack -p --env production",
     "dev": "webpack-dev-server",
-    "test": "jest --config=jest.config.json"
+    "test": "jest --config=jest.config.json",
+    "start": "node server/server.js",
+    "heroku-postbuild": "npm run build:prod"
   },
   "author": "Nicky Meuleman",
   "license": "MIT",
@@ -47,6 +49,7 @@
     "webpack-dev-server": "^2.9.3"
   },
   "dependencies": {
+    "express": "^4.16.2",
     "moment": "^2.19.2",
     "normalize.css": "^7.0.0",
     "react": "^16.0.0",
