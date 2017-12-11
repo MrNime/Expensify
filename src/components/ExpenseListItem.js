@@ -14,7 +14,7 @@ const ExpenseListItem = ({
     {
       //    <p>€{(amount / 100).toFixed(2)}</p>
     }
-    <p>{moment(createdAt).format('DD/MM/YYYY')}</p>
+    <p>{moment(createdAt).format('Do MMMM YYYY')}</p>
   </div>
 );
 
