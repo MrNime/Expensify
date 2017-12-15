@@ -1,5 +1,4 @@
 node_modules/
-public/dist/*
-src/firebase/config.js
+public/dist/
 .env.test
 .env.development
