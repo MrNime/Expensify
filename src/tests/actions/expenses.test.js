@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 import {
   startAddExpense,
   addExpense,
+  startEditExpense,
   editExpense,
   startRemoveExpense,
   removeExpense,
@@ -87,6 +88,44 @@ test('should setup edit expense action object', () => {
   });
 });
 
+// using async/await
+// test('should edit expense from firebase', async () => {
+//   const store = createMockStore({});
+//   const { id } = expenses[0];
+//   const updates = { amount: 8321.34 };
+//   await store.dispatch(startEditExpense(id, updates));
+//   const actions = store.getActions();
+//   expect(actions[0]).toEqual({
+//     type: 'EDIT_EXPENSE',
+//     id,
+//     updates,
+//   });
+//   const snapshot = await database.ref(`expenses/${id}`).once('value');
+//   expect(snapshot.val().amount).toBe(updates.amount);
+// });
+
+// using Promises
+test('should edit expense from firebase', (done) => {
+  const store = createMockStore({});
+  const { id } = expenses[0];
+  const updates = { amount: 8321.34 };
+  store
+    .dispatch(startEditExpense(id, updates))
+    .then(() => {
+      const actions = store.getActions();
+      expect(actions[0]).toEqual({
+        type: 'EDIT_EXPENSE',
+        id,
+        updates,
+      });
+      return database.ref(`expenses/${id}`).once('value');
+    })
+    .then((snapshot) => {
+      expect(snapshot.val().amount).toBe(updates.amount);
+      done();
+    });
+});
+
 test('should setup add expense action object with provided values', () => {
   const action = addExpense(expenses[2]);
   expect(action).toEqual({
@@ -95,7 +134,7 @@ test('should setup add expense action object with provided values', () => {
   });
 });
 
-// asyn/await way
+// async/await
 // test('should add expense to database and store', async () => {
 //   const store = createMockStore({});
 //   const expenseData = {
@@ -117,7 +156,7 @@ test('should setup add expense action object with provided values', () => {
 //   expect(snapshot.val()).toEqual(expenseData);
 // });
 
-// Promises way
+// Promises
 test('should add expense to database and store', (done) => {
   const store = createMockStore({});
   const expenseData = {
@@ -180,6 +219,21 @@ test('should setup set expense action object with data', () => {
   });
 });
 
+// async/await
+// test('should fetch expenses from firebase', async () => {
+//   const store = createMockStore({});
+//   await store.dispatch(startSetExpenses());
+//   const actions = store.getActions();
+//   expect(actions[0]).toEqual({
+//     type: 'SET_EXPENSES',
+//     // de expenses worden van firebase gehaald, het id wordt in het object gestoken en
+//     // dat object wordt verzonden in de setExpenses call, dus onze fixtures hebben de
+//     // juiste vorm al
+//     expenses,
+//   });
+// });
+
+// Promises
 test('should fetch expenses from firebase', (done) => {
   const store = createMockStore({});
   store.dispatch(startSetExpenses()).then(() => {
