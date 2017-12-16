@@ -4,6 +4,7 @@ import {
   startAddExpense,
   addExpense,
   editExpense,
+  startRemoveExpense,
   removeExpense,
   startSetExpenses,
   setExpenses,
@@ -37,6 +38,40 @@ test('should setup remove expense action object', () => {
     type: 'REMOVE_EXPENSE',
     id: 'abcdefghi',
   });
+});
+
+// using async/await
+// test('should remove expense from firebase', async () => {
+//   const store = createMockStore({});
+//   const { id } = expenses[2];
+//   await store.dispatch(startRemoveExpense({ id }));
+//   const actions = store.getActions();
+//   expect(actions[0]).toEqual({
+//     type: 'REMOVE_EXPENSE',
+//     id,
+//   });
+//   const snapshot = await database.ref(`expenses/${id}`).once('value');
+//   expect(snapshot.val()).toBeFalsy();
+// });
+
+// using Promises
+test('should remove expense from firebase', (done) => {
+  const store = createMockStore({});
+  const { id } = expenses[2];
+  store
+    .dispatch(startRemoveExpense({ id }))
+    .then(() => {
+      const actions = store.getActions();
+      expect(actions[0]).toEqual({
+        type: 'REMOVE_EXPENSE',
+        id,
+      });
+      return database.ref(`expenses/${id}`).once('value');
+    })
+    .then((snapshot) => {
+      expect(snapshot.val()).toBe(null);
+      done();
+    });
 });
 
 test('should setup edit expense action object', () => {
