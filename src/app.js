@@ -7,6 +7,7 @@ import moment from 'moment';
 import numeral from 'numeral';
 import 'numeral/locales/nl-be';
 import { startSetExpenses } from './actions/expenses';
+import { login, logout } from './actions/auth';
 import AppRouter, { history } from './routers/AppRouter';
 import configureStore from './store/configureStore';
 import { firebase } from './firebase/firebase';
@@ -37,6 +38,8 @@ ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     console.log('log in');
+    console.log(JSON.stringify(user, null, 2));
+    store.dispatch(login(user.uid));
     store.dispatch(startSetExpenses()).then(() => {
       renderApp();
       if (history.location.pathname === '/') {
@@ -45,6 +48,7 @@ firebase.auth().onAuthStateChanged((user) => {
     });
   } else {
     console.log('log out');
+    store.dispatch(logout());
     renderApp();
     history.push('/');
   }
