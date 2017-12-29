@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { startLogout } from '../actions/auth';
+import ConnectedUserWidget from '../components/UserWidget';
 
 export const Header = ({ dispatchStartLogout }) => (
   <header className="header">
@@ -10,9 +11,7 @@ export const Header = ({ dispatchStartLogout }) => (
         <Link className="header__title" to="/dashboard">
           <h1>Expensify</h1>
         </Link>
-        <button className="button button--link" onClick={dispatchStartLogout}>
-          Logout
-        </button>
+        <ConnectedUserWidget />
       </div>
     </div>
   </header>

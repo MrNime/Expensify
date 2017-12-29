@@ -1,0 +1,20 @@
+.user-widget {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-widget__image {
+  border-radius: 50%;
+}
+
+.user-widget__text {
+  color: white;
+  padding: 0 0 0 $s-size;
+  text-align: center;
+  button {
+    font-size: $font-size-small;
+    padding: 0;
+    color: darken($color: #ffffff, $amount: 30%);
+  }
+}

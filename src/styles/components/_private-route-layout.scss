@@ -1,0 +1,9 @@
+.private-route {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.private-route__content {
+  flex: 1;
+}

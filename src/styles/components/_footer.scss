@@ -1,0 +1,14 @@
+.footer {
+  background-color: $dark-blue;
+}
+
+.footer__content {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: $s-size 0;
+  color: $off-white;
+  a {
+    color: darken($color: #ffffff, $amount: 30%);
+  }
+}
