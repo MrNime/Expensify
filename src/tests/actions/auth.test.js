@@ -2,10 +2,14 @@ import { login, logout } from '../../actions/auth';
 
 test('should setup login action object', () => {
   const uid = 'abcdefghijklmnopqrstuvwxyz';
-  const action = login(uid);
+  const displayName = 'Test User';
+  const photoURL = 'https://www.thistotallydoesnotexist.com/aphotourl.jpg';
+  const action = login({ uid, displayName, photoURL });
   expect(action).toEqual({
     type: 'LOGIN',
     uid,
+    displayName,
+    photoURL,
   });
 });
 

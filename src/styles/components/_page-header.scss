@@ -4,13 +4,28 @@
   padding: $l-size 0;
 }
 
-.page-header__actions {
-  margin-top: $m-size;
+.page-header__content {
+  display: flex;
+  flex-direction: column;
 }
 
 .page-header__title {
   font-weight: 300;
   margin: 0;
+  span {
+    font-weight: 700;
+  }
+}
+
+.page-header__section {
+  display: flex;
+  align-items: center;
+  margin-top: $m-size;
+}
+
+.page-header__subtitle {
+  font-weight: 300;
+  margin: 0 0 0 $m-size;
   span {
     font-weight: 700;
   }

@@ -7,31 +7,50 @@ exports[`should correctly render ExpensesSummary with 0 expenses 1`] = `
   <div
     className="content-container"
   >
-    <h1
-      className="page-header__title"
-    >
-      Viewing 
-      <span>
-        0
-      </span>
-       
-      expenses
-       totalling
-       
-      <span>
-        € 0,00
-      </span>
-    </h1>
     <div
-      className="page-header__actions"
+      className="page-header__content"
     >
-      <Link
-        className="button"
-        replace={false}
-        to="/create"
+      <h1
+        className="page-header__title"
       >
-        Add Expense
-      </Link>
+        Viewing 
+        <span>
+          0
+        </span>
+         
+        expenses
+         totalling
+         
+        <span>
+          € 0,00
+        </span>
+      </h1>
+      <div
+        className="page-header__section"
+      >
+        <Link
+          className="button"
+          replace={false}
+          to="/create"
+        >
+          Add Expense
+        </Link>
+        <h3
+          className="page-header__subtitle"
+        >
+          Filtering 
+          <span>
+            0
+          </span>
+           
+          expenses
+           totalling
+           
+          <span>
+            € 0,00
+          </span>
+        </h3>
+      </div>
     </div>
   </div>
 </div>
@@ -44,31 +63,50 @@ exports[`should correctly render ExpensesSummary with 1 expense 1`] = `
   <div
     className="content-container"
   >
-    <h1
-      className="page-header__title"
-    >
-      Viewing 
-      <span>
-        1
-      </span>
-       
-      expense
-       totalling
-       
-      <span>
-        € 1,23
-      </span>
-    </h1>
     <div
-      className="page-header__actions"
+      className="page-header__content"
     >
-      <Link
-        className="button"
-        replace={false}
-        to="/create"
+      <h1
+        className="page-header__title"
       >
-        Add Expense
-      </Link>
+        Viewing 
+        <span>
+          1
+        </span>
+         
+        expense
+         totalling
+         
+        <span>
+          € 1,23
+        </span>
+      </h1>
+      <div
+        className="page-header__section"
+      >
+        <Link
+          className="button"
+          replace={false}
+          to="/create"
+        >
+          Add Expense
+        </Link>
+        <h3
+          className="page-header__subtitle"
+        >
+          Filtering 
+          <span>
+            0
+          </span>
+           
+          expenses
+           totalling
+           
+          <span>
+            € 0,00
+          </span>
+        </h3>
+      </div>
     </div>
   </div>
 </div>
@@ -81,31 +119,162 @@ exports[`should correctly render ExpensesSummary with multiple expenses 1`] = `
   <div
     className="content-container"
   >
-    <h1
-      className="page-header__title"
-    >
-      Viewing 
-      <span>
-        14
-      </span>
-       
-      expenses
-       totalling
-       
-      <span>
-        € 1 234 567,89
-      </span>
-    </h1>
     <div
-      className="page-header__actions"
+      className="page-header__content"
     >
-      <Link
-        className="button"
-        replace={false}
-        to="/create"
+      <h1
+        className="page-header__title"
       >
-        Add Expense
-      </Link>
+        Viewing 
+        <span>
+          14
+        </span>
+         
+        expenses
+         totalling
+         
+        <span>
+          € 1 234 567,89
+        </span>
+      </h1>
+      <div
+        className="page-header__section"
+      >
+        <Link
+          className="button"
+          replace={false}
+          to="/create"
+        >
+          Add Expense
+        </Link>
+        <h3
+          className="page-header__subtitle"
+        >
+          Filtering 
+          <span>
+            0
+          </span>
+           
+          expenses
+           totalling
+           
+          <span>
+            € 0,00
+          </span>
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`should correctly render ExpensesSummeray with 1 filtered expense 1`] = `
+<div
+  className="page-header"
+>
+  <div
+    className="content-container"
+  >
+    <div
+      className="page-header__content"
+    >
+      <h1
+        className="page-header__title"
+      >
+        Viewing 
+        <span>
+          14
+        </span>
+         
+        expenses
+         totalling
+         
+        <span>
+          € 1 234 567,89
+        </span>
+      </h1>
+      <div
+        className="page-header__section"
+      >
+        <Link
+          className="button"
+          replace={false}
+          to="/create"
+        >
+          Add Expense
+        </Link>
+        <h3
+          className="page-header__subtitle"
+        >
+          Filtering 
+          <span>
+            1
+          </span>
+           
+          expense
+           totalling
+           
+          <span>
+            € 238,94
+          </span>
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`should correctly render ExpensesSummeray with multiple filtered expenses 1`] = `
+<div
+  className="page-header"
+>
+  <div
+    className="content-container"
+  >
+    <div
+      className="page-header__content"
+    >
+      <h1
+        className="page-header__title"
+      >
+        Viewing 
+        <span>
+          14
+        </span>
+         
+        expenses
+         totalling
+         
+        <span>
+          € 1 234 567,89
+        </span>
+      </h1>
+      <div
+        className="page-header__section"
+      >
+        <Link
+          className="button"
+          replace={false}
+          to="/create"
+        >
+          Add Expense
+        </Link>
+        <h3
+          className="page-header__subtitle"
+        >
+          Filtering 
+          <span>
+            832
+          </span>
+           
+          expenses
+           totalling
+           
+          <span>
+            € 238 941 019,03
+          </span>
+        </h3>
+      </div>
     </div>
   </div>
 </div>
