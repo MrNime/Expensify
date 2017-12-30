@@ -10,17 +10,21 @@ export const ExpensesSummary = ({
   visibleExpenseTotal,
   invisibleExpenseCount,
   invisibleExpenseTotal,
+  allExpenseCount,
+  allExpenseTotal,
 }) => {
   const visibleExpenseWord = visibleExpenseCount === 1 ? 'expense' : 'expenses';
   const formattedVisibleExpenseTotal = numeral(visibleExpenseTotal / 100).format('$0,0.00');
   const invisibleExpenseWord = invisibleExpenseCount === 1 ? 'expense' : 'expenses';
   const formattedInvisibleExpenseTotal = numeral(invisibleExpenseTotal / 100).format('$0,0.00');
+  const allExpenseWord = allExpenseCount === 1 ? 'expense' : 'expenses';
+  const formattedAllExpenseTotal = numeral(allExpenseTotal / 100).format('$0,0.00');
   return (
     <div className="page-header">
       <div className="content-container">
         <div className="page-header__content">
           <h1 className="page-header__title">
-            Viewing <span>{visibleExpenseCount}</span> {visibleExpenseWord} totalling{' '}
+            Viewing <span>{visibleExpenseCount}</span> {visibleExpenseWord} worth{' '}
             <span>{formattedVisibleExpenseTotal}</span>
           </h1>
           <div className="page-header__section">
@@ -28,8 +32,14 @@ export const ExpensesSummary = ({
               Add Expense
             </Link>
             <h3 className="page-header__subtitle">
-              Filtering <span>{invisibleExpenseCount}</span> {invisibleExpenseWord} totalling{' '}
-              <span>{formattedInvisibleExpenseTotal}</span>
+              <div className="page-header__filtered">
+                Filtering <span>{invisibleExpenseCount}</span> {invisibleExpenseWord} worth{' '}
+                <span>{formattedInvisibleExpenseTotal}</span>
+              </div>
+              <div className="page-header__total">
+                from <span>{allExpenseCount}</span> total {allExpenseWord} worth{' '}
+                <span>{formattedAllExpenseTotal}</span>
+              </div>
             </h3>
           </div>
         </div>
@@ -46,6 +56,8 @@ const mapStateToProps = (state) => {
     invisibleExpenseCount: state.expenses.length - visibleExpenses.length,
     invisibleExpenseTotal:
       selectExpensesTotal(state.expenses) - selectExpensesTotal(visibleExpenses),
+    allExpenseCount: state.expenses.length,
+    allExpenseTotal: selectExpensesTotal(state.expenses),
   };
 };
 
