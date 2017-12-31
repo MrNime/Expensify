@@ -2,12 +2,22 @@
   border: 1px solid #cacccd;
   font-size: $font-size-large;
   font-weight: 300;
-  height: 50px;
+  height: 48px;
+  max-width: 230px;
   padding: $s-size;
 }
 
 .select {
   @extend .text-input;
+}
+
+.clear-button {
+  @extend .text-input;
+  margin: 0;
+  &:hover,
+  &:focus {
+    border-radius: 0%;
+  }
 }
 
 .textarea {

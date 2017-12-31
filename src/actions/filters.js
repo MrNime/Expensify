@@ -20,3 +20,7 @@ export const setEndDate = endDate => ({
   type: 'SET_END_DATE',
   endDate,
 });
+
+export const clearFilters = () => ({
+  type: 'CLEAR_FILTERS',
+});
