@@ -3,6 +3,7 @@ import moment from 'moment';
 const filtersReducerDefaultState = {
   text: '',
   sortBy: 'date',
+  sortDirection: 'descending',
   startDate: moment().startOf('month'),
   endDate: moment().endOf('month'),
 };
@@ -39,6 +40,16 @@ export default (state = filtersReducerDefaultState, action) => {
         ...filtersReducerDefaultState,
         startDate: null,
         endDate: null,
+      };
+    case 'SORT_ASCENDING':
+      return {
+        ...state,
+        sortDirection: 'ascending',
+      };
+    case 'SORT_DESCENDING':
+      return {
+        ...state,
+        sortDirection: 'descending',
       };
     default: {
       return state;

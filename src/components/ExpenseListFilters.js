@@ -10,6 +10,8 @@ import {
   setStartDate,
   setEndDate,
   clearFilters,
+  sortAscending,
+  sortDescending,
 } from '../actions/filters';
 
 export class ExpenseListFilters extends Component {
@@ -29,6 +31,10 @@ export class ExpenseListFilters extends Component {
   onSortChange = (e) => {
     // eslint-disable-next-line
     e.target.value === 'date' ? this.props.sortByDate() : this.props.sortByAmount();
+  };
+  onDirectionChange = (e) => {
+    // eslint-disable-next-line
+    e.target.value === 'descending' ? this.props.sortAscending() : this.props.sortDescending();
   };
   onClearFilters = () => {
     this.props.clearFilters();
@@ -55,6 +61,27 @@ export class ExpenseListFilters extends Component {
               <option value="date">Date</option>
               <option value="amount">Amount</option>
             </select>
+            <button
+              className="sort-direction"
+              onClick={this.onDirectionChange}
+              value={this.props.filters.sortDirection}
+            >
+              {this.props.filters.sortDirection === 'descending' ? (
+                <svg
+                  className="DayPickerNavigation_svg__horizontal DayPickerNavigation_svg__horizontal_1"
+                  viewBox="0 0 1000 1000"
+                >
+                  <path d="M336.2 274.5l-210.1 210h805.4c13 0 23 10 23 23s-10 23-23 23H126.1l210.1 210.1c11 11 11 21 0 32-5 5-10 7-16 7s-11-2-16-7l-249.1-249c-11-11-11-21 0-32l249.1-249.1c21-21.1 53 10.9 32 32z" />
+                </svg>
+              ) : (
+                <svg
+                  className="DayPickerNavigation_svg__horizontal DayPickerNavigation_svg__horizontal_1"
+                  viewBox="0 0 1000 1000"
+                >
+                  <path d="M694.4 242.4l249.1 249.1c11 11 11 21 0 32L694.4 772.7c-5 5-10 7-16 7s-11-2-16-7c-11-11-11-21 0-32l210.1-210.1H67.1c-13 0-23-10-23-23s10-23 23-23h805.4L662.4 274.5c-21-21.1 11-53.1 32-32.1z" />
+                </svg>
+              )}
+            </button>
           </div>
           <div className="input-group__item">
             <DateRangePicker
@@ -103,6 +130,8 @@ const mapDispatchToProps = dispatch => ({
   setStartDate: startDate => dispatch(setStartDate(startDate)),
   setEndDate: endDate => dispatch(setEndDate(endDate)),
   clearFilters: () => dispatch(clearFilters()),
+  sortAscending: () => dispatch(sortAscending()),
+  sortDescending: () => dispatch(sortDescending()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExpenseListFilters);

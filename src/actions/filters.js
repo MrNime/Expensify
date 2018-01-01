@@ -24,3 +24,11 @@ export const setEndDate = endDate => ({
 export const clearFilters = () => ({
   type: 'CLEAR_FILTERS',
 });
+
+export const sortAscending = () => ({
+  type: 'SORT_ASCENDING',
+});
+
+export const sortDescending = () => ({
+  type: 'SORT_DESCENDING',
+});

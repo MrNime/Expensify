@@ -1,14 +1,25 @@
 .text-input {
   border: 1px solid #cacccd;
+  color: $input-text;
   font-size: $font-size-large;
   font-weight: 300;
   height: 48px;
-  max-width: 230px;
   padding: $s-size;
+  &::placeholder {
+    color: $input-text;
+  }
 }
 
 .select {
   @extend .text-input;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.sort-direction {
+  @extend .text-input;
+  background: none;
+  border-left: none;
 }
 
 .clear-button {

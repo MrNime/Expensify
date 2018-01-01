@@ -2,7 +2,7 @@ import moment from 'moment';
 
 // Get visible expenses
 export default (expenses, {
-  text, sortBy, startDate, endDate,
+  text, sortBy, sortDirection, startDate, endDate,
 }) =>
   expenses
     .filter((expense) => {
@@ -14,8 +14,14 @@ export default (expenses, {
     })
     .sort((a, b) => {
       if (sortBy === 'date') {
-        return a.createdAt < b.createdAt ? 1 : -1;
+        if (sortDirection === 'descending') {
+          return a.createdAt < b.createdAt ? 1 : -1;
+        }
+        return a.createdAt < b.createdAt ? -1 : 1;
       } else if (sortBy === 'amount') {
-        return a.amount < b.amount ? 1 : -1;
+        if (sortDirection === 'descending') {
+          return a.amount < b.amount ? 1 : -1;
+        }
+        return a.amount < b.amount ? -1 : 1;
       }
     });
