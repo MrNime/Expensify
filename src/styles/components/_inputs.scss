@@ -20,6 +20,9 @@
   @extend .text-input;
   background: none;
   border-left: none;
+  & > * {
+    pointer-events: none;
+  }
 }
 
 .clear-button {
