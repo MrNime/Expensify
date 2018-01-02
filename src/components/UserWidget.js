@@ -4,7 +4,7 @@ import { startLogout } from '../actions/auth';
 
 export const UserWidget = ({ dispatchStartLogout, displayName, photoURL }) => (
   <div className="user-widget">
-    <img className="user-widget__image" src={`${photoURL}?sz=50`} alt={displayName} />
+    <img className="user-widget__image" src={photoURL} alt={displayName} />
     <div className="user-widget__text">
       <div>{displayName}</div>
       <button className="button button--link" onClick={dispatchStartLogout}>
