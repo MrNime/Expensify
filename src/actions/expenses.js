@@ -8,12 +8,13 @@ export const addExpense = expense => ({
 export const startAddExpense = (expenseData = {}) => (dispatch, getState) => {
   const { uid } = getState().auth;
   const {
-    description = '', note = '', amount = 0, createdAt = 0,
+    description = '', note = '', amount = 0, createdAt = 0, paidAmount = 0,
   } = expenseData;
   const expense = {
     description,
     note,
     amount,
+    paidAmount,
     createdAt,
   };
   return database
