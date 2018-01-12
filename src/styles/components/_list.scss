@@ -7,6 +7,12 @@
   padding: $s-size $m-size;
 }
 
+.list-header__amounts {
+  display: grid;
+  grid-template-columns: 10rem 10rem 10rem;
+  justify-items: end;
+}
+
 .list-body {
   margin-bottom: $m-size;
   @media (min-width: $desktop-breakpoint) {
@@ -32,6 +38,12 @@
     justify-content: space-between;
     padding: $m-size;
   }
+}
+
+.list-item__amounts {
+  display: grid;
+  grid-template-columns: 10rem 10rem 10rem;
+  justify-items: end;
 }
 
 .list-item__title {
