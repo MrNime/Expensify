@@ -10,10 +10,37 @@
 }
 
 .page-header__title {
-  font-weight: 300;
+  width: 35%;
   margin: 0;
-  span {
-    font-weight: 700;
+  h1 {
+    font-weight: 300;
+    margin: 0;
+    &:not(:first-child) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    span {
+      font-weight: 700;
+      justify-self: end;
+    }
+  }
+  .page-header__operation {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    height: 50px;
+    .page-header__operation--sign {
+      height: 2px;
+      width: 1rem;
+      background-color: #333333;
+      margin-right: $s-size;
+      justify-self: end;
+    }
+    .page-header__operation--line {
+      background-color: #333333;
+      height: 2px;
+      width: 100%;
+    }
   }
 }
 

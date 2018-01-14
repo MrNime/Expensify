@@ -18,6 +18,7 @@ export const ExpensesSummary = ({
   const visibleExpenseWord = visibleExpenseCount === 1 ? 'expense' : 'expenses';
   const formattedVisibleExpenseTotal = numeral(visibleExpenseTotal / 100).format('$0,0.00');
   const formattedVisibleExpenseSavings = numeral(visibleExpenseSavings / 100).format('$0,0.00');
+  const formattedVisibleExpensePaid = numeral((visibleExpenseTotal - visibleExpenseSavings) / 100).format('$0,0.00');
   const invisibleExpenseWord = invisibleExpenseCount === 1 ? 'expense' : 'expenses';
   const formattedInvisibleExpenseTotal = numeral(invisibleExpenseTotal / 100).format('$0,0.00');
   const allExpenseWord = allExpenseCount === 1 ? 'expense' : 'expenses';
@@ -27,11 +28,24 @@ export const ExpensesSummary = ({
     <div className="page-header">
       <div className="content-container">
         <div className="page-header__content">
-          <h1 className="page-header__title">
-            Viewing <span>{visibleExpenseCount}</span> {visibleExpenseWord} worth{' '}
-            <span>{formattedVisibleExpenseTotal}</span>. Visible savings:{' '}
-            <span>{formattedVisibleExpenseSavings}</span>
-          </h1>
+          <div className="page-header__title">
+            <h1>
+              Viewing <span>{visibleExpenseCount}</span> {visibleExpenseWord}
+            </h1>
+            <h1>
+              Total: <span>{formattedVisibleExpenseTotal}</span>
+            </h1>
+            <h1>
+              Savings: <span>{formattedVisibleExpenseSavings}</span>
+            </h1>
+            <div className="page-header__operation">
+              <div className="page-header__operation--sign" />
+              <div className="page-header__operation--line" />
+            </div>
+            <h1>
+              Paid: <span>{formattedVisibleExpensePaid}</span>
+            </h1>
+          </div>
           <div className="page-header__section">
             <Link className="button" to="/create">
               Add Expense
