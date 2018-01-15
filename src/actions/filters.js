@@ -11,6 +11,18 @@ export const sortByDate = () => ({
   type: 'SORT_BY_DATE',
 });
 
+export const sortByDescription = () => ({
+  type: 'SORT_BY_DESCRIPTION',
+});
+
+export const sortByPaid = () => ({
+  type: 'SORT_BY_PAID',
+});
+
+export const sortBySaved = () => ({
+  type: 'SORT_BY_SAVED',
+});
+
 export const setStartDate = startDate => ({
   type: 'SET_START_DATE',
   startDate,

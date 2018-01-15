@@ -12,6 +12,9 @@ import {
   clearFilters,
   sortAscending,
   sortDescending,
+  sortByDescription,
+  sortByPaid,
+  sortBySaved,
 } from '../actions/filters';
 
 export class ExpenseListFilters extends Component {
@@ -29,8 +32,25 @@ export class ExpenseListFilters extends Component {
     this.props.setTextFilter(e.target.value);
   };
   onSortChange = (e) => {
-    // eslint-disable-next-line
-    e.target.value === 'date' ? this.props.sortByDate() : this.props.sortByAmount();
+    switch (e.target.value) {
+      case 'date':
+        this.props.sortByDate();
+        break;
+      case 'amount':
+        this.props.sortByAmount();
+        break;
+      case 'description':
+        this.props.sortByDescription();
+        break;
+      case 'paid':
+        this.props.sortByPaid();
+        break;
+      case 'saved':
+        this.props.sortBySaved();
+        break;
+      default:
+        break;
+    }
   };
   onDirectionChange = (e) => {
     // eslint-disable-next-line
@@ -60,6 +80,9 @@ export class ExpenseListFilters extends Component {
             >
               <option value="date">Date</option>
               <option value="amount">Amount</option>
+              <option value="description">Description</option>
+              <option value="paid">Paid</option>
+              <option value="saved">Saved</option>
             </select>
             <button
               className="sort-direction"
@@ -127,6 +150,9 @@ const mapDispatchToProps = dispatch => ({
   setTextFilter: text => dispatch(setTextFilter(text)),
   sortByDate: () => dispatch(sortByDate()),
   sortByAmount: () => dispatch(sortByAmount()),
+  sortByDescription: () => dispatch(sortByDescription()),
+  sortByPaid: () => dispatch(sortByPaid()),
+  sortBySaved: () => dispatch(sortBySaved()),
   setStartDate: startDate => dispatch(setStartDate(startDate)),
   setEndDate: endDate => dispatch(setEndDate(endDate)),
   clearFilters: () => dispatch(clearFilters()),
