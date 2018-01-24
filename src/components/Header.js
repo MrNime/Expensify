@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 import { startLogout } from '../actions/auth';
 import ConnectedUserWidget from '../components/UserWidget';
 
-export const Header = ({ dispatchStartLogout }) => (
+export const Header = ({ dispatchStartLogout, isAuthenticated }) => (
   <header className="header">
     <div className="content-container">
       <div className="header__content">
         <Link className="header__title" to="/dashboard">
           <h1>Expensify</h1>
         </Link>
-        <ConnectedUserWidget />
+        {isAuthenticated && <ConnectedUserWidget />}
       </div>
     </div>
   </header>
@@ -20,4 +20,9 @@ export const Header = ({ dispatchStartLogout }) => (
 const mapDispatchToProps = dispatch => ({
   dispatchStartLogout: () => dispatch(startLogout()),
 });
-export default connect(undefined, mapDispatchToProps)(Header);
+
+const mapStateToProps = state => ({
+  isAuthenticated: !!state.auth.uid,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
