@@ -24,6 +24,6 @@ button:disabled {
   cursor: default;
 }
 
-.is-active {
-  color: red;
+a {
+  color: darken($color: #ffffff, $amount: 30%);
 }
