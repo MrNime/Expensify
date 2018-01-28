@@ -6,7 +6,7 @@ const Footer = ({ dispatchStartLogout }) => (
       <div className="footer__content">
         <p>
           Coded by{' '}
-          <a href="https://github.com/MrNime/Expensify" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/NickyMeuleman/Expensify" target="_blank" rel="noopener noreferrer">
             Nicky Meuleman
           </a>
         </p>
